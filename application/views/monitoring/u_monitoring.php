@@ -90,7 +90,7 @@
                     <div class="col-sm-6">
                      <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" accept="image/*" required>
+                        <input type="file" class="custom-file-input" id="foto" name="foto" accept="image/*">
                         <label class="custom-file-label" for="exampleInputFile">Pilih Gambar</label>
                       </div>
                     </div>

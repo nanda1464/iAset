@@ -35,7 +35,14 @@
           </div>
         </div>
         <div class="card-body">
-             
+
+        <?php foreach ($aset as $mt): ?>
+          <left>
+            <img src="<?=base_url()?>src/img/wujud/<?=(isset($mt['foto']) ? $mt['foto'] : 'default.jpg')?>" 
+            alt="Foto Aset" style="width:150px;height:150px;">
+          <left>
+            <?php endforeach; ?>
+
           <?php foreach($aset as $d){?>
             <?php if ($d['qr_code'] != NULL): ?>
               <center>

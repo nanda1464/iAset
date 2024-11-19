@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -152,7 +152,7 @@
                   <tbody>
                     <tr>
                       <td rowspan="5">
-                        <img src="<?=base_url()?>src/img/aset/<?=$mt['foto']?>" alt="" style="width:100px;height:100px;">
+                        <img src="<?=base_url()?>src/img/monitor/<?=$mt['foto']?>" alt="" style="width:100px;height:100px;">
                       </td>
                       <td><?=$mt['kerusakan']?></td>
                       <td rowspan="4"><?=$mt['faktor']?></td>

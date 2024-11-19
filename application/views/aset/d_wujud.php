@@ -36,11 +36,19 @@
         </div>
         <div class="card-body">
              
+
+        <?php foreach ($aset as $mt): ?>
+          <left>
+            <img src="<?=base_url()?>src/img/wujud/<?=(isset($mt['foto']) ? $mt['foto'] : 'default.jpg')?>" 
+            alt="" style="width:150px;height:150px;">
+          <left>
+            <?php endforeach; ?>
+
           <?php foreach($aset as $d){?>
             <?php if ($d['qr_code'] != NULL): ?>
-              <center>
+              <left>
                 <img src="<?=base_url()?>src/img/qrcode/<?=$d['qr_code']; ?>" style="height:150px;width:150px;">
-              </center>
+            </left>
               <br/>  
             <?php endif ?>                  
           <?php } ?>
@@ -137,29 +145,6 @@
           </table>
         </div>
         <!-- /.card-body -->
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>FOTO ASET</th>
-              </tr>
-            </thead>
-            <table class="table table-striped">
-                 <thead>
-                    <tr>
-                     <th>FOTO ASET</th>
-                    </tr>
-                 </thead>
-                  <tbody>
-                    <tr>
-                    <td rowspan="5">
-                        <img src="<?=base_url()?>src/img/wujud/<?=$mt['foto']?>" alt="" style="width:100px;height:100px;">
-                      </td>
-                     </tr>
-                  </tbody>
-              </table>
-            </table>
-        </div>
         <div class="card-footer">
          <a href="<?=base_url('aset_wujud')?>">
           <button type="button" class="btn btn-danger">Kembali</button>

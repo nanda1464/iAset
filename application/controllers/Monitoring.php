@@ -161,7 +161,7 @@ class Monitoring extends CI_Controller {
                 	'monitoring' => $this->input->post('monitoring'),
                 	'pemeliharaan' => $this->input->post('pemeliharaan'),
                 	'jml_rusak' => $this->input->post('jml_rusak'),
-                	'foto' => $gbr['file_name'],
+					'foto' => $uploaded_image,
                 	'updated_at' => date('Y-m-d H:i:s')
                 );
                 unset($data['id_monitoring']);

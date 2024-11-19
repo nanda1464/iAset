@@ -33,9 +33,7 @@ class Aset extends CI_Controller
 			'active_menu_aset' => 'active',
 			'active_menu_wujud' => 'active',
 			'aset' => $this->ma->getAsetWujud(),
-			'kategori' => $this->mk->getKategoriBarang(),
-			'mt' => $this->ma->getAsetWujud(),
-			'mt' => $this->mk->getKategoriBarang()
+			'kategori' => $this->mk->getKategoriBarang()
 		);
 		$this->load->view('layouts/header', $data);
 		$this->load->view('aset/v_wujud', $data);
@@ -84,7 +82,7 @@ class Aset extends CI_Controller
                 $gbr = $this->upload->data();
                 // Compress Image
                 $config['image_library'] = 'gd2';
-                $config['source_image'] = 'src/img/wujud/' . $gbr['file_name'];
+                $config['source_image'] = 'src/img/wujud/'.$gbr['file_name'];
                 $config['create_thumb'] = FALSE;
                 $config['maintain_ratio'] = FALSE;
                 $config['quality'] = '60%';
@@ -122,6 +120,9 @@ class Aset extends CI_Controller
         );
 
         if ($generate) {
+
+			$kode_aset = $this->input->post('kode_aset');
+
             $config['cacheable']    = true; 
             $config['cachedir']     = './src/'; 
             $config['errorlog']     = './src/'; 
@@ -132,7 +133,8 @@ class Aset extends CI_Controller
             $config['white']        = array(70, 130, 180); 
             $this->ciqrcode->initialize($config);
 
-            $image_name = $id_aset . '.png';
+			$id = $this->uuid->v4();
+			$image_name = $id_aset . '.png';
             $url = 'http://localhost/aset/' . $id_aset;
 
             $params['data'] = $url;
@@ -153,7 +155,7 @@ class Aset extends CI_Controller
             $this->session->set_flashdata('gagal', 'Disimpan');
             redirect('aset_wujud/tambah');
         }
-    } else {
+    	} else {
         $data = array(
             'title' => 'Aset Berwujud',
             'active_menu_open' => 'menu-open',
@@ -317,12 +319,10 @@ class Aset extends CI_Controller
 		$id_aset = $this->uri->segment(3);
 		$data = array(
 			'title' => 'Aset Berwujud',
-			'active_menu_mt' => 'active',
 			'active_menu_open' => 'menu-open',
 			'active_menu_aset' => 'active',
 			'active_menu_wujud' => 'active',
 			'aset' => $this->ma->getDetailAsetWujud($id_aset),
-			'mt' => $this->ma->getDetailAsetWujud($id_aset)
 		);
 		$this->load->view('layouts/header', $data);
 		$this->load->view('aset/d_wujud', $data);
@@ -336,6 +336,7 @@ class Aset extends CI_Controller
 		$this->db->where('id_aset', $id_aset);
 		$get_image_file = $this->db->get('asets')->row();
 		@unlink('src/img/qrcode/' . $get_image_file->qr_code);
+		@unlink('src/img/wujud/'.$get_image_file->foto);
 
 		$this->db->where('id_aset', $id_aset);
 		$this->db->delete('asets');
